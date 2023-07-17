@@ -2,7 +2,9 @@ import { Button, Image, StyleSheet, Text, View, useWindowDimensions } from "reac
 import React, { useEffect, useState } from "react";
 import allProducts from "../Data/products.json";
 
-const ItemDetail = ({ idSelected, setProductselected }) => {
+const ItemDetail = ({ navigation, route }) => {
+
+    const {productId : idSelected} = route.params
 
     const [product, setProduct] = useState(null);
     const [orientation, setOrientation] = useState("portrait")
@@ -22,7 +24,7 @@ const ItemDetail = ({ idSelected, setProductselected }) => {
 
     return (
         <View>
-            <Button onPress={() => setProductselected("")} title="Go back"/>
+            <Button onPress={() => navigation.goBack()} title="Go back"/>
             {product ? (
                 <View style={orientation === "portrait" ? styles.mainContainer : styles.mainContainerLandscape} >
                     <Image
