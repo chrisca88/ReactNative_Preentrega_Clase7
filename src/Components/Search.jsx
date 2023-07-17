@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native'
+import { Pressable, StyleSheet, Text, TextInput, View, useWindowDimensions } from 'react-native'
 import React, { useState } from 'react'
 import { colors } from '../Global/Colors';
 import { Ionicons } from '@expo/vector-icons';
@@ -11,9 +11,10 @@ const Search = ({
     goBack
 }) => {
     const [keyword, setKeyword] = useState("")
+    const {height,width} = useWindowDimensions()
 
   return (
-    <View style ={styles.container}>
+    <View style ={ width > 350 ? styles.container : styles.containerSM}>
        { error ?
          <Text style ={styles.textError}>
             {error}
@@ -47,6 +48,14 @@ export default Search
 const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: 'auto',
+        marginTop: 10,
+        gap: 18,
+    },
+    containerSM: {
+        flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
         height: 'auto',
