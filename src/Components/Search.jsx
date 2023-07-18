@@ -12,6 +12,10 @@ const Search = ({
 }) => {
     const [keyword, setKeyword] = useState("")
     const {height,width} = useWindowDimensions()
+    const onErase = () =>{
+        setKeyword("")
+        onSearch("")
+    }
 
   return (
     <View style ={ width > 350 ? styles.container : styles.containerSM}>
@@ -31,11 +35,8 @@ const Search = ({
             <Pressable onPress={()=>onSearch(keyword)}>
             <MaterialCommunityIcons name="shopping-search" size={24} color="black" />
         </Pressable>
-        <Pressable onPress={()=> setKeyword("")}>
+        <Pressable onPress={onErase}>
             <MaterialIcons name="cleaning-services" size={24} color="black" />
-        </Pressable>
-        <Pressable onPress={goBack}>
-            <Ionicons name="arrow-back" size={24} color="black" />
         </Pressable>
         </View>
             }

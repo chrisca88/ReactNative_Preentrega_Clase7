@@ -24,7 +24,6 @@ const ItemDetail = ({ navigation, route }) => {
 
     return (
         <View>
-            <Button onPress={() => navigation.goBack()} title="Go back"/>
             {product ? (
                 <View style={orientation === "portrait" ? styles.mainContainer : styles.mainContainerLandscape} >
                     <Image
