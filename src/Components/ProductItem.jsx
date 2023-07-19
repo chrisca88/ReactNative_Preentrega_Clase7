@@ -1,4 +1,4 @@
-import { Image, Pressable, StyleSheet, Text, useWindowDimensions } from 'react-native'
+import { Image, Pressable, StyleSheet, Text, View, useWindowDimensions } from 'react-native'
 import React from 'react'
 import Card from './Card'
 
@@ -14,6 +14,7 @@ const ProductItem = ({
   }
 
   return (
+    <View style = {{width: width, alignItems: 'center'}}>
     <Pressable onPress={() => onSelect(item.id)}>
     <Card
       additionalStyle={styles.additionalStylesCard}
@@ -27,6 +28,7 @@ const ProductItem = ({
     </Card>
 
     </Pressable>
+    </View>
   )
 }
 
