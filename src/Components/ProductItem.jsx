@@ -22,7 +22,7 @@ const ProductItem = ({
         <Text style={ width > 350 ? styles.textCategory : styles.textCategorySM }>{item.title}</Text>
         <Image 
           style = {styles.image}
-          resizeMode='cover'
+          resizeMode='contain'
           source={{uri: item.images[0]}}
         />
     </Card>
@@ -36,7 +36,7 @@ export default ProductItem
 
 const styles = StyleSheet.create({
   image: {
-    height: 120,
+    height: 94,
     width: '40%',
     minWidth: 150,
     maxWidth: 250,
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
   },
   textCategory:{
     width: '50%',
-    fontSize: 22,
+    fontSize: 20,
   },
   textCategorySM:{
     width: '50%',
@@ -52,7 +52,8 @@ const styles = StyleSheet.create({
   },
   additionalStylesCard: {
     flexDirection: 'row',
-    height: 120,
-    justifyContent: 'space-between'
+    height: 100,
+    justifyContent: 'space-between',
+    width: 'auto'
   }
 })

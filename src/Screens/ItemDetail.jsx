@@ -1,11 +1,12 @@
 import { Button, Image, StyleSheet, Text, View, useWindowDimensions } from "react-native";
 import React, { useEffect, useState } from "react";
+import { colors } from '../Global/Colors'
 import allProducts from "../Data/products.json";
+
 
 const ItemDetail = ({ navigation, route }) => {
 
     const {productId : idSelected} = route.params
-
     const [product, setProduct] = useState(null);
     const [orientation, setOrientation] = useState("portrait")
     const {width, height} = useWindowDimensions()
@@ -29,13 +30,13 @@ const ItemDetail = ({ navigation, route }) => {
                     <Image
                         source={{ uri: product.images[0] }}
                         style={styles.image}
-                        resizeMode="cover"
+                        resizeMode="contain"
                     />
                     <View style = {styles.textContainer}>
-                      <Text>{product.title}</Text>
+                      <Text style= {styles.textTitle}>{product.title}</Text>
                       <Text>{product.description}</Text>
-                      <Text>${product.price}</Text>
-                      <Button title="Add cart"></Button>
+                      <Text style = {styles.textPrice}>${product.price}</Text>
+                      <Button color={colors.blue} title="Add cart"></Button>
                     </View>
                 </View>
             ) : null}
@@ -49,13 +50,13 @@ const styles = StyleSheet.create({
     mainContainer: {
         flexDirection: "column",
         justifyContent: "center",
-        alignItems: "flex-start",
+        alignItems: 'center',
         padding: 10,
     },
     mainContainerLandscape: {
       flexDirection: "row",
       justifyContent: "center",
-      alignItems: "flex-start",
+      alignItems: 'center',
       padding: 10,
   },
     image: {
@@ -63,6 +64,17 @@ const styles = StyleSheet.create({
         height: 250,
     },
     textContainer: {
-      flexDirection: 'column'
-    }
+      flexDirection: 'column',
+      alignItems:'center',
+      marginTop: 10
+    },
+    textTitle:{
+        marginBottom: 10,
+        fontStyle:'italic',
+        fontWeight: 'bold'
+    },
+    textPrice:{
+        margin:10,
+        fontWeight:'bold'
+    },
 });
