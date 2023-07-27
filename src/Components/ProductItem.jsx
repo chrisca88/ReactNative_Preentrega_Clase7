@@ -1,6 +1,8 @@
 import { Image, Pressable, StyleSheet, Text, View, useWindowDimensions } from 'react-native'
 import React from 'react'
 import Card from './Card'
+import { useDispatch } from 'react-redux';
+import { setIdSelected } from '../Features/Shop/ShopSlice'
 
 const ProductItem = ({
   item,
@@ -8,8 +10,10 @@ const ProductItem = ({
  }) => {
 
   const {height, width} = useWindowDimensions();
+  const dispatch = useDispatch()
   
   const onSelect = (id) =>{
+    dispatch(setIdSelected(item))
     navigation.navigate('Detail', {productId: item.id, title: item.title})
   }
 

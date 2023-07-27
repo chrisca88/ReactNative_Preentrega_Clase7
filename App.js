@@ -1,6 +1,8 @@
-import { StyleSheet } from 'react-native';
 import { useFonts } from 'expo-font';
 import Navigator from './src/Navigation/Navigator';
+import { Provider } from 'react-redux';
+import store from './src/Store/store';
+
 
 export default function App() {
 
@@ -13,7 +15,9 @@ export default function App() {
   }
   
   return (
-   <Navigator/>
+    <Provider store={store}>
+      <Navigator/>
+    </Provider>
 
   );
 }

@@ -1,27 +1,29 @@
 import { Button, Image, StyleSheet, Text, View, useWindowDimensions } from "react-native";
 import React, { useEffect, useState } from "react";
 import { colors } from '../Global/Colors'
-import allProducts from "../Data/products.json";
+import { useSelector } from "react-redux";
 
 
 const ItemDetail = ({ navigation, route }) => {
 
-    const {productId : idSelected} = route.params
     const [product, setProduct] = useState(null);
     const [orientation, setOrientation] = useState("portrait")
     const {width, height} = useWindowDimensions()
+
+    const selectedProduct = useSelector (state => state.shopReducer.value.productSelected)
 
     useEffect(()=> {
       if (width > height) setOrientation("landscape")
       else setOrientation("portrait")
     }, [width, height])
 
+    
+
     useEffect(() => {
-        const productSelected = allProducts.find(
-            (product) => product.id === idSelected
-        )
+        const productSelected = selectedProduct
         setProduct(productSelected)
-    }, [idSelected])
+    })
+
 
     return (
         <View>
