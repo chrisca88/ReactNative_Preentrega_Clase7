@@ -1,7 +1,8 @@
 import { Button, Image, StyleSheet, Text, View, useWindowDimensions } from "react-native";
 import React, { useEffect, useState } from "react";
 import { colors } from '../Global/Colors'
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { addCartItem } from "../Features/Cart/cartSlice";
 
 
 const ItemDetail = ({ navigation, route }) => {
@@ -9,6 +10,8 @@ const ItemDetail = ({ navigation, route }) => {
     const [product, setProduct] = useState(null);
     const [orientation, setOrientation] = useState("portrait")
     const {width, height} = useWindowDimensions()
+
+    const dispatch = useDispatch ()
 
     const selectedProduct = useSelector (state => state.shopReducer.value.productSelected)
 
@@ -24,6 +27,13 @@ const ItemDetail = ({ navigation, route }) => {
         setProduct(productSelected)
     })
 
+    const onAddCart = () => {
+        dispatch(addCartItem({
+            ...product,
+            quantity: 1
+        }))
+    }
+
 
     return (
         <View>
@@ -38,7 +48,9 @@ const ItemDetail = ({ navigation, route }) => {
                       <Text style= {styles.textTitle}>{product.title}</Text>
                       <Text>{product.description}</Text>
                       <Text style = {styles.textPrice}>${product.price}</Text>
-                      <Button color={colors.blue} title="Add cart"></Button>
+                      <Button color={colors.blue} title="Add cart"
+                        onPress={onAddCart}
+                      ></Button>
                     </View>
                 </View>
             ) : null}

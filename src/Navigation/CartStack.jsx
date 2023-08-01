@@ -1,7 +1,6 @@
-import React from "react";
+import React from "react"
 import Header from '../Components/Header'
-
-import Cart from "../Screens/Cart";
+import Cart from "../Screens/Cart"
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
 const Stack = createNativeStackNavigator()
@@ -18,7 +17,6 @@ const CartStack = () => {
             })}
         >
             <Stack.Screen name="CartScreen" component={Cart} />
-
         </Stack.Navigator>
     );
 };

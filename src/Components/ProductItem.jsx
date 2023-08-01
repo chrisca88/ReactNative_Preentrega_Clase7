@@ -18,22 +18,24 @@ const ProductItem = ({
   }
 
   return (
-    <View style = {{width: width, alignItems: 'center'}}>
     <Pressable onPress={() => onSelect(item.id)}>
-    <Card
-      additionalStyle={styles.additionalStylesCard}
-    >
-        <Text style={ width > 350 ? styles.textCategory : styles.textCategorySM }>{item.title}</Text>
-        <Image 
-          style = {styles.image}
-          resizeMode='contain'
-          source={{uri: item.images[0]}}
-        />
-    </Card>
-
+        <Card additionalStyle={styles.additionalStylesCard}>
+            <Text
+                style={
+                    width > 350 ? styles.textCategory : 
+                    styles.textCategorySM
+                }
+            >
+                {item.title}
+            </Text>
+            <Image
+                resizeMode="cover"
+                style={styles.image}
+                source={{ uri: item.images[0] }}
+            />
+        </Card>
     </Pressable>
-    </View>
-  )
+);
 }
 
 export default ProductItem

@@ -13,14 +13,9 @@ const ShopStack = () => {
   return (
     <Stack.Navigator
                 initialRouteName='Home'
-                screenOptions={
-                    ({route, navigation}) => (
-                        {
-                            header: () => {
-                                return <Header
-                                    route={route}
-                                    navigation={navigation}
-                                />
+                screenOptions={({ route, navigation }) => ({
+                    header: () => {
+                                return <Header route={route} navigation={navigation} />;
                             },
                         }
                     )
