@@ -11,15 +11,20 @@ import { Fontisto } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
 import OrderStack from './OrderStack'
 import { MaterialIcons } from '@expo/vector-icons';
+import { useSelector } from 'react-redux'
+import AuthStack from './AuthStack'
 
 
 const Tab = createBottomTabNavigator()
 
 
 const Navigator = () => {
+    const {email} = useSelector(state => state.userReducer.value)
   return (
     <SafeAreaView style = {styles.container}>
         <NavigationContainer>
+            {
+                email ?
             <Tab.Navigator
                 screenOptions={{
                     headerShown: false,
@@ -67,6 +72,9 @@ const Navigator = () => {
                     }}
                 />
             </Tab.Navigator>
+            
+            : <AuthStack/>
+            }
         </NavigationContainer>
   </SafeAreaView>
   )
