@@ -42,7 +42,9 @@ const LoginScreen = ({ navigation }) => {
         if(resultSignIn.isSuccess) {
             dispatch(setUser({
                 email: resultSignIn.data.email,
-                idToken: resultSignIn.data.idToken
+                idToken: resultSignIn.data.idToken,
+                localId: resultSignIn.data.localId,
+                profileImage: ""
             }))
         }
     }, [resultSignIn])
@@ -62,7 +64,7 @@ const LoginScreen = ({ navigation }) => {
                     error={errorPassword}
                     isSecure={true}
                 />
-                <SubmitButton onPress={onSubmit} title="Login" />
+                <SubmitButton onPress={onSubmit} title="Send" />
                 <Text style={styles.sub}>Not have an account?</Text>
                 <Pressable onPress={() => navigation.navigate("Signup")}>
                     <Text style={styles.subLink}>Sign up</Text>

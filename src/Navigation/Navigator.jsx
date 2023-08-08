@@ -10,9 +10,10 @@ import { colors } from '../Global/Colors'
 import { Fontisto } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
 import OrderStack from './OrderStack'
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialIcons,Ionicons } from '@expo/vector-icons';
 import { useSelector } from 'react-redux'
 import AuthStack from './AuthStack'
+import MyProfileStack from './MyProfileStack'
 
 
 const Tab = createBottomTabNavigator()
@@ -71,6 +72,27 @@ const Navigator = () => {
                         }
                     }}
                 />
+                <Tab.Screen
+                        name="MyProfile"
+                        component={MyProfileStack}
+                        options={{
+                            tabBarIcon: ({ focused }) => {
+                                return (
+                                    <View style={styles.item}>
+                                        <Ionicons
+                                            name="person-circle-outline"
+                                            size={24}
+                                            color={
+                                                focused
+                                                    ? 'black'
+                                                    : 'gray'
+                                            }
+                                        />
+                                    </View>
+                                );
+                            },
+                        }}
+                    />
             </Tab.Navigator>
             
             : <AuthStack/>

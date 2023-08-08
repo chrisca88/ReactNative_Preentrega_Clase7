@@ -58,7 +58,6 @@ const styles = StyleSheet.create({
       position: 'absolute',
       right: 30,
       top: '50%',
-      margin: -8
     },
     text: {
         fontSize: 25,
@@ -68,6 +67,5 @@ const styles = StyleSheet.create({
         position: "absolute",
         left: 30,
         top: "50%",
-        margin: -8
     }
 })
