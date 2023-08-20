@@ -7,6 +7,7 @@ import { useSignInMutation } from "../Services/authServices";
 import { isAtLeastSixCharacters, isValidEmail } from "../Validations/auth";
 import { useDispatch } from "react-redux";
 import { setUser } from "../Features/User/userSlice";
+import { insertSession } from "../SQLite";
 
 const LoginScreen = ({ navigation }) => {
     const [email, setEmail] = useState('');
@@ -20,7 +21,6 @@ const LoginScreen = ({ navigation }) => {
     const [triggerSignIn, resultSignIn] = useSignInMutation();
     const onSubmit = () => {
 
-        //Submit logic with validations
         const isValidVariableEmail = isValidEmail(email)
         const isCorrectPassword = isAtLeastSixCharacters(password)
 
@@ -32,21 +32,38 @@ const LoginScreen = ({ navigation }) => {
             });
         }
 
-        if (!isValidVariableEmail) setErrorEmail ('Email is not correct')
+        if (!isValidVariableEmail) setErrorEmail ("email or password is incorrect")
         else setErrorEmail('')
-        if (!isCorrectPassword) setErrorPassword ('Password must be at least 6 characters')
+        if (!isCorrectPassword) setErrorPassword ("email or password is incorrect")
         else setErrorPassword('')
     };
 
     useEffect(()=> {
-        if(resultSignIn.isSuccess) {
-            dispatch(setUser({
-                email: resultSignIn.data.email,
-                idToken: resultSignIn.data.idToken,
-                localId: resultSignIn.data.localId,
-                profileImage: ""
-            }))
-        }
+        (async ()=> {
+            try {
+                if(resultSignIn.isSuccess) {
+                    const response = await insertSession({
+                        idToken: resultSignIn.data.idToken,
+                        localId: resultSignIn.data.localId,
+                        email: resultSignIn.data.email,
+                    })
+                    console.log(response);
+
+                    dispatch(setUser({
+                        email: resultSignIn.data.email,
+                        idToken: resultSignIn.data.idToken,
+                        localId: resultSignIn.data.localId,
+                        profileImage: "",
+                        location: {
+                            latitude: "",
+                            longitude: "",
+                        }
+                    }))
+                }
+            } catch (error) {
+                console.log(error.message);
+            }
+        })()
     }, [resultSignIn])
 
     return (
