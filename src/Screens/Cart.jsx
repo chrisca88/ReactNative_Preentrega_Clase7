@@ -1,18 +1,22 @@
 import { FlatList, Pressable, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import CartItem from '../Components/CartItem';
 import { usePostCartMutation } from '../Services/shopServices';
 import { colors } from '../Global/Colors';
+import { resetCart } from '../Features/Cart/cartSlice';
 
 const Cart = () => {
     const {items: CartData, total, updatedAt} = useSelector(state => state.cartReducer.value)
     const email = useSelector(state => state.userReducer.value.email)
 
+    const dispatch = useDispatch()
+
     const [triggerPostCart, result] = usePostCartMutation()
 
     const onConfirm = () => {
         triggerPostCart({ items: CartData, total, updatedAt, user: email })
+        dispatch(resetCart());
     }
 
     return (

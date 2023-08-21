@@ -10,8 +10,8 @@ import { fonts } from './src/Assets/Fonts';
 
 export default function App() {
 
-  useEffect(()=> {
-    init()
+  init(()=> {
+    dropTableSessions()
       .then(()=> {
         
       })
@@ -30,7 +30,6 @@ export default function App() {
     <Provider store={store}>
       <Navigator/>
     </Provider>
-
   );
 }
 

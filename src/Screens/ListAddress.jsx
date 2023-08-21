@@ -8,11 +8,11 @@ import { useGetUserLocationQuery } from "../Services/shopServices";
 const ListAddress = ({ navigation }) => {
     const { location, localId } = useSelector((state) => state.userReducer.value);
     const {data: userLocationQuery, isError, isLoading} = useGetUserLocationQuery(localId)
-
+    
 
     return location?.latitude || userLocationQuery ? (
         <AddressItem 
-            location={location.latitude ? location : userLocationQuery} 
+            location={location?.latitude ? location : userLocationQuery} 
             navigation={navigation} 
         />
     ) : (
