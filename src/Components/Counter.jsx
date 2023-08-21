@@ -1,7 +1,7 @@
-import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 import React, { useState } from "react";
-import { colors } from "../Global/Colors";
+import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
+import { colors } from "../Global/Colors";
 import { increment, decrement, incrementByAmount, reset} from "../Features/Counter/counterSlice";
 
 const Counter = () => {

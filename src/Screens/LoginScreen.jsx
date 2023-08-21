@@ -1,13 +1,15 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import InputForm from "../Components/InputForm";
 import SubmitButton from "../Components/SubmitButton";
 import { colors } from "../Global/Colors";
 import { useSignInMutation } from "../Services/authServices";
 import { isAtLeastSixCharacters, isValidEmail } from "../Validations/auth";
-import { useDispatch } from "react-redux";
 import { setUser } from "../Features/User/userSlice";
 import { insertSession } from "../SQLite";
+
+
 
 const LoginScreen = ({ navigation }) => {
     const [email, setEmail] = useState('');
@@ -42,12 +44,11 @@ const LoginScreen = ({ navigation }) => {
         (async ()=> {
             try {
                 if(resultSignIn.isSuccess) {
-                    const response = await insertSession({
+                        await insertSession({
                         idToken: resultSignIn.data.idToken,
                         localId: resultSignIn.data.localId,
                         email: resultSignIn.data.email,
                     })
-                    console.log(response);
 
                     dispatch(setUser({
                         email: resultSignIn.data.email,
@@ -61,7 +62,7 @@ const LoginScreen = ({ navigation }) => {
                     }))
                 }
             } catch (error) {
-                console.log(error.message);
+                navigation.navigate('Error')
             }
         })()
     }, [resultSignIn])

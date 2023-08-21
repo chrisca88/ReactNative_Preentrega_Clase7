@@ -1,16 +1,18 @@
 import { FlatList, Pressable, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-import CartItem from '../Components/CartItem';
 import { useSelector } from 'react-redux';
+import CartItem from '../Components/CartItem';
 import { usePostCartMutation } from '../Services/shopServices';
+import { colors } from '../Global/Colors';
 
 const Cart = () => {
-    const {items: CartData, total, updatedAt, user} = useSelector(state => state.cartReducer.value)
+    const {items: CartData, total, updatedAt} = useSelector(state => state.cartReducer.value)
+    const email = useSelector(state => state.userReducer.value.email)
 
     const [triggerPostCart, result] = usePostCartMutation()
 
     const onConfirm = () => {
-        triggerPostCart({items: CartData, total, updatedAt, user})
+        triggerPostCart({ items: CartData, total, updatedAt, user: email })
     }
 
     return (
@@ -30,7 +32,7 @@ const Cart = () => {
             <Pressable
                 onPress = {onConfirm}
             >
-                <Text>
+                <Text  style={styles.text}>
                     Confirm
                 </Text>
             </Pressable>
@@ -46,15 +48,22 @@ const styles = StyleSheet.create({
     container: {
         justifyContent: 'space-between',
         flex: 1,
-        marginBottom: 30,
     },
     totalContainer: {
-        flexDirection: 'column',
-        justifyContent: 'center',
+        flexDirection: 'row',
+        justifyContent: 'space-around',
         alignItems: 'center',
     },
     textTotal:{
         fontWeight:'bold',
-        margin:10
+ 
+    },
+    text:{
+        fontWeight:'bold',
+        backgroundColor: colors.lightblue,
+        borderRadius:5,
+        padding:10,
+        margin:5
+
     }
 })

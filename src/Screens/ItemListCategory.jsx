@@ -1,10 +1,10 @@
 import { FlatList, StyleSheet, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import ProductItem from '../Components/ProductItem'
-import { colors } from '../Global/Colors'
-import Search from '../Components/Search'
 import { useSelector } from 'react-redux'
+import ProductItem from '../Components/ProductItem'
+import Search from '../Components/Search'
 import { useGetProductsByCategoryQuery } from '../Services/shopServices'
+
 
 const ItemListCategory = ({
   navigation,
@@ -60,7 +60,6 @@ export default ItemListCategory
 const styles = StyleSheet.create({
     container: {
         height: '100%',
-        backgroundColor: colors.lightblue,
         alignItems: 'center'
     }
 })

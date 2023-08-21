@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from "react-native";
-import { Feather } from "@expo/vector-icons";
 import React from "react";
+import { Feather } from "@expo/vector-icons";
 import { colors } from "../Global/Colors";
 
 const OrderItem = ({ order }) => {

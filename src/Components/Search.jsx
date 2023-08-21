@@ -1,10 +1,15 @@
 import { Pressable, StyleSheet, Text, TextInput, View, useWindowDimensions } from 'react-native'
 import React, { useState } from 'react'
-import { colors } from '../Global/Colors';
-import { Ionicons } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
+import { colors } from '../Global/Colors';
 
+/**
+ * 
+ * @param {*} param0 
+ * @returns 
+ */
 const Search = ({
     onSearch,
     error = "",

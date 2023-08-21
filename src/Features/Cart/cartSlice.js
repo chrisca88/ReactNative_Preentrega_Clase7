@@ -4,7 +4,7 @@ export const cartSlice = createSlice({
     name: "Cart",
     initialState: {
         value: {
-            user: "Hardcoder user",
+            user: "",
             updatedAt: "",
             total: null,
             items: []
@@ -38,6 +38,13 @@ export const cartSlice = createSlice({
         },
         removeCartItem: (state,action) => {
             //Logic to remove item
+            const itemToRemoveIndex = state.value.items.findIndex(item => item.id === action.payload.id);
+
+            if (itemToRemoveIndex !== -1) {
+                const removedItem = state.value.items.splice(itemToRemoveIndex, 1)[0];
+                state.value.total -= removedItem.price * removedItem.quantity;
+                state.value.updatedAt = new Date().toLocaleString();
+            }
         }
     }
 })

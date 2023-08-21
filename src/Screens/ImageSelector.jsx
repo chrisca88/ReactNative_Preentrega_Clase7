@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Image, View, StyleSheet, Text } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
+import * as MediaLibrary from "expo-media-library";
 import * as ImagePicker from "expo-image-picker";
 import AddButton from "../Components/AddButton";
 import { colors } from "../Global/Colors";
-import * as MediaLibrary from "expo-media-library";
 import { usePostProfileImageMutation } from "../Services/shopServices";
-import { useDispatch, useSelector } from "react-redux";
 import { saveImage } from "../Features/User/userSlice";
 
 const ImageSelector = ({ navigation }) => {
@@ -60,7 +60,7 @@ const ImageSelector = ({ navigation }) => {
                 dispatch(saveImage(response.uri));
             }
         } catch (error) {
-            console.log(error);
+            navigation.navigate('Error')
         }
         navigation.goBack();
     };

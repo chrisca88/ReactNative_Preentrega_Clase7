@@ -1,7 +1,7 @@
 import { Image, Pressable, StyleSheet, Text, View, useWindowDimensions } from 'react-native'
+import { useDispatch } from 'react-redux';
 import React from 'react'
 import Card from './Card'
-import { useDispatch } from 'react-redux';
 import { setIdSelected } from '../Features/Shop/ShopSlice'
 
 const ProductItem = ({

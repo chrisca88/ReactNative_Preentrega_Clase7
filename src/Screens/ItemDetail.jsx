@@ -1,7 +1,7 @@
 import { Button, Image, StyleSheet, Text, View, useWindowDimensions } from "react-native";
 import React, { useEffect, useState } from "react";
-import { colors } from '../Global/Colors'
 import { useDispatch, useSelector } from "react-redux";
+import { colors } from '../Global/Colors'
 import { addCartItem } from "../Features/Cart/cartSlice";
 
 

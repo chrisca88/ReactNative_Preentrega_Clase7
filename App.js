@@ -1,28 +1,26 @@
 import { useFonts } from 'expo-font';
-import Navigator from './src/Navigation/Navigator';
 import { Provider } from 'react-redux';
-import store from './src/Store/store';
 import { useEffect } from 'react';
+
+import Navigator from './src/Navigation/Navigator';
+import store from './src/Store/store';
 import { dropTableSessions, init } from './src/SQLite';
+import { fonts } from './src/Assets/Fonts';
 
 
 export default function App() {
 
   useEffect(()=> {
     init()
-      .then((result)=> {
-        console.log("Db initialized/dropped")
-        console.log(result);
+      .then(()=> {
+        
       })
-      .catch(err => {
-        console.log("Initialization DB failed:");
-        console.log(err.message);
+      .catch(error => {
+  
     })
   }, [])
 
-  const [fontsLoaded] = useFonts({
-    'Antique': require('./src/Assets/Fonts/Bacasime_Antique/BacasimeAntique-Regular.ttf')
-  });
+  const [fontsLoaded] = useFonts(fonts)
 
   if (!fontsLoaded) {
     return null;

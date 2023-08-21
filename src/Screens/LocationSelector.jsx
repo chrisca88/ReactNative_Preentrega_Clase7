@@ -1,9 +1,9 @@
 import { StyleSheet, Text, View } from "react-native";
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import * as Location from "expo-location";
 import AddButton from "../Components/AddButton";
 import { usePostUserLocationMutation } from "../Services/shopServices";
-import { useDispatch, useSelector } from "react-redux";
 import { setUserLocation } from "../Features/User/userSlice";
 import { colors } from "../Global/Colors";
 import MapPreview from "../Components/MapPreview";
@@ -41,7 +41,7 @@ const LocationSelector = ({ navigation }) => {
         navigation.goBack()
     }
     
-    //Location requested on mount
+ 
     useEffect(() => {
         (async () => {
             try {
@@ -58,25 +58,23 @@ const LocationSelector = ({ navigation }) => {
                 });
                 
             } catch (error) {
-                console.log(error.message);
                 setError(error.message)
             }
         })()
     }, [])
 
-    //Reverse geocoding
+
     useEffect(() => {
         (async () => {
             try {
                 if (location.latitude) {
                     const url_reverse_geocode = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${location.latitude},${location.longitude}&key=${google_maps_api_key}`;
-                    const response = await fetch(url_reverse_geocode);
+                    const response = await fetch(url_reverse_geocode)
                     const data = await response.json();
-                    console.dir(data);
-                    setAddress(data.results[0].formatted_address);
+                    setAddress(data.results[0].formatted_address)
                 }
             } catch (error) {
-                setError(error.message);
+                setError(error.message)
             }
         })();
     }, [location]);
@@ -86,7 +84,7 @@ const LocationSelector = ({ navigation }) => {
             <Text
                 style = {styles.text}
             >My Address</Text>
-            {/* Flatlist con las directions */}
+
             {location ? (
                 <>
                     <Text 

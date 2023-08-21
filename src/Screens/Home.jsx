@@ -1,8 +1,6 @@
 import { FlatList, StyleSheet, View } from 'react-native'
 import React from 'react'
-import { colors } from '../Global/Colors'
 import CategoryItem from '../Components/CategoryItem'
-import Counter from '../Components/Counter'
 import { useGetCategoriesQuery } from '../Services/shopServices'
 
 const Home = ({
@@ -26,7 +24,6 @@ export default Home
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: colors.lightblue,
         alignItems: 'center'
     }
 })

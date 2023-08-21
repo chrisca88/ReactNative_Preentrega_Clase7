@@ -1,10 +1,10 @@
 import {configureStore, getDefaultMiddleware} from '@reduxjs/toolkit'
+import { setupListeners } from '@reduxjs/toolkit/dist/query'
 import counterReducer from '../Features/Counter/counterSlice'
 import shopReducer from '../Features/Shop/ShopSlice'
 import cartReducer from '../Features/Cart/cartSlice'
 import userReducer from '../Features/User/userSlice'
 import { shopApi } from '../Services/shopServices'
-import { setupListeners } from '@reduxjs/toolkit/dist/query'
 import { authApi } from '../Services/authServices'
 
 const store = configureStore({
@@ -21,5 +21,5 @@ const store = configureStore({
 })
 
 setupListeners(store.dispatch)
-
+        
 export default store

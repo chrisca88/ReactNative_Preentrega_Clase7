@@ -1,9 +1,9 @@
 import { Pressable, StyleSheet, Text, View, useWindowDimensions } from 'react-native'
 import React from 'react'
-import Card from './Card'
-
 import { useDispatch } from 'react-redux'
+import Card from './Card'
 import { setCategorySelected } from '../Features/Shop/ShopSlice'
+
 
 
 const CategoryItem = ({

@@ -36,7 +36,7 @@ const SignupScreen = ({ navigation }) => {
 
     const onSubmit = () => {
         try {
-            //Submit logic with validations
+  
             const isValidVariableEmail = isValidEmail(email)
             const isCorrectPassword = isAtLeastSixCharacters(password)
             const isRepeatedPasswordCorrect = password === confirmPassword
@@ -57,9 +57,8 @@ const SignupScreen = ({ navigation }) => {
             if (!isRepeatedPasswordCorrect) setErrorConfirmPassword ('Passwords must match')
             else setErrorConfirmPassword('')
 
-        } catch (err) {
-            console.log("Catch error");
-            console.log(err.message);
+        } catch (error) {
+            setError(error.message)
         }
     };
 

@@ -1,9 +1,9 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-import { colors } from '../Global/Colors'
+import { useDispatch, useSelector } from 'react-redux';
 import { Ionicons } from '@expo/vector-icons';
 import { SimpleLineIcons } from "@expo/vector-icons";
-import { useDispatch, useSelector } from 'react-redux';
+import { colors } from '../Global/Colors'
 import { signOut } from "../Features/User/userSlice";
 import { deleteSession } from "../SQLite";
 
@@ -23,12 +23,10 @@ const Header = ({
 
   const onSignout = async () => {
     try {
-        const response = await deleteSession(localId)
-        console.log("Session deleted: ")
-        console.log(response)
+        await deleteSession(localId)
         dispatch(signOut())
     } catch (error) {
-        console.log(error.message)
+
     }
 }
 
@@ -69,7 +67,7 @@ const styles = StyleSheet.create({
     },
     pressable:{
       position: 'absolute',
-      right: 30,
+      left: 30,
       top: '50%',
     },
     text: {
@@ -78,7 +76,7 @@ const styles = StyleSheet.create({
     },
     signOut: {
         position: "absolute",
-        left: 30,
+        right: 30,
         top: "50%",
     }
 })

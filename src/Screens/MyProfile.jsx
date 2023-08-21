@@ -1,13 +1,12 @@
 import { Image, StyleSheet, View } from "react-native";
 import React, { useState } from "react";
-import AddButton from "../Components/AddButton";
-import * as ImagePicker from 'expo-image-picker'
 import { useSelector } from "react-redux";
+import AddButton from "../Components/AddButton";
 import { useGetProfileImageQuery } from "../Services/shopServices";
+import * as ImagePicker from 'expo-image-picker'
 
 const MyProfile = ({navigation}) => {
-    // const {profileImage, imageCamera} = useSelector(state => state.authReducer.value);
-
+  
     const {localId, profileImage} = useSelector(state => state.userReducer.value)
 
     const {data: image} = useGetProfileImageQuery(localId)

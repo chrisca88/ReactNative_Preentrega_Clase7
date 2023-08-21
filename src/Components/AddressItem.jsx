@@ -1,11 +1,10 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
-import { Entypo } from "@expo/vector-icons";
 import React from "react";
+import { Entypo } from "@expo/vector-icons";
 import { colors } from "../Global/Colors";
 
 const AddressItem = ({ location, navigation }) => {
 
-    console.log(location);
 
     const onChangeLocation = () => {
         navigation.navigate('Location Selector')
