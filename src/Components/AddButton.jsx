@@ -2,6 +2,16 @@ import { Pressable, StyleSheet, Text } from "react-native";
 import React from "react";
 import { colors } from "../Global/Colors";
 
+/**
+ * This component is used in the following components:
+ * - ImageSelector
+ * - ListAddress
+ * - LocationSelector
+ * 
+ * @param title The text to display on the button.
+ * @param color Background color of the button.
+ */
+
 const AddButton = ({
     title = "",
     onPress = () => {},

@@ -3,6 +3,14 @@ import React from "react";
 import { Entypo } from "@expo/vector-icons";
 import { colors } from "../Global/Colors";
 
+/**
+ * This component is used in the following components:
+ * ListAddress
+ * 
+ * @param location The address location to display.
+ * @param navigation The navigation object for routing.
+ */
+
 const AddressItem = ({ location, navigation }) => {
 
 

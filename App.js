@@ -4,15 +4,15 @@ import { useEffect } from 'react';
 
 import Navigator from './src/Navigation/Navigator';
 import store from './src/Store/store';
-import { dropTableSessions, init } from './src/SQLite';
+import { init } from './src/SQLite';
 import { fonts } from './src/Assets/Fonts';
 
 
 export default function App() {
 
-  init(()=> {
-    dropTableSessions()
-      .then(()=> {
+  useEffect(()=> {
+    init()
+      .then((result)=> {
         
       })
       .catch(error => {

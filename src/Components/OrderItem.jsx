@@ -3,6 +3,13 @@ import React from "react";
 import { Feather } from "@expo/vector-icons";
 import { colors } from "../Global/Colors";
 
+/**
+ * This component is used in the following components:
+ * OrderScreen
+ * 
+ * @param order The order information to display.
+ */
+
 const OrderItem = ({ order }) => {
     const total = order.items.reduce(
         (acc, currentItem) => (acc += currentItem.price * currentItem.quantity),

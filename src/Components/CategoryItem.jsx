@@ -4,7 +4,13 @@ import { useDispatch } from 'react-redux'
 import Card from './Card'
 import { setCategorySelected } from '../Features/Shop/ShopSlice'
 
-
+/**
+ * This component is used in the following components:
+ * Home 
+ * 
+ * @param item The category name to display.
+ * @param navigation The navigation object for routing.
+ */
 
 const CategoryItem = ({
   item,

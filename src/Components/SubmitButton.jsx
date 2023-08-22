@@ -2,6 +2,15 @@ import { Pressable, StyleSheet, Text } from "react-native";
 import React from "react";
 import { colors } from "../Global/Colors";
 
+/**
+ * This component is used in the following components:
+ * LoginScreen 
+ * SignupScreen
+ * 
+ * @param onPress Callback function when the button is pressed.
+ * @param title The text to display on the button.
+ */
+
 const SubmitButton = ({ onPress, title }) => {
     return (
         <Pressable onPress={onPress} style={styles.button}>

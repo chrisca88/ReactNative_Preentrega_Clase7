@@ -5,6 +5,12 @@ import { Entypo } from "@expo/vector-icons";
 import { useDispatch } from "react-redux";
 import { removeCartItem } from "../Features/Cart/cartSlice";
 
+/**
+ * This component is used in the following components:
+ * Cart 
+ * 
+ * @param cartItem The item information to display.
+ */
 
 const CartItem = ({ cartItem }) => {
     const dispatch = useDispatch();

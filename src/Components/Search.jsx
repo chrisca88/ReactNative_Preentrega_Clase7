@@ -6,10 +6,13 @@ import { Ionicons } from '@expo/vector-icons';
 import { colors } from '../Global/Colors';
 
 /**
+ * This component is used in the following components: 
+ * ItemListCategory
  * 
- * @param {*} param0 
- * @returns 
+ * @param onSearch Callback when search
+ * @param error For showing error 
  */
+
 const Search = ({
     onSearch,
     error = "",

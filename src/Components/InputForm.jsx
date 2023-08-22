@@ -2,6 +2,17 @@ import { StyleSheet, Text, TextInput, View } from 'react-native'
 import React, { useState } from 'react'
 import { colors } from '../Global/Colors';
 
+/**
+ * This component is used in the following components:
+ * LoginScreen 
+ * SignupScreen
+ * 
+ * @param label The label to display above the input field.
+ * @param onChange Callback function when input value changes.
+ * @param error Error message to display, if any.
+ * @param isSecure Flag indicating whether the input is for sensitive data.
+ */
+
 const InputForm = ({
     label, 
     onChange, 

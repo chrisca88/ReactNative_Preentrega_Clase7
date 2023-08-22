@@ -2,6 +2,15 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { colors } from '../Global/Colors'
 
+/**
+ * This component is used in the following components:
+ * ProductItem 
+ * CategoryItem
+ * 
+ * @param children The content to be displayed within the card.
+ * @param additionalStyle Additional styles to be applied to the card container.
+ */
+
 const Card = ({children, additionalStyle = []}) => {
   return (
     <View style = {[styles.cardContainer, additionalStyle]}>

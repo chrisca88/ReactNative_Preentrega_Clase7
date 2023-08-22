@@ -1,9 +1,9 @@
 import { Image, StyleSheet, View } from "react-native";
-import React, { useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import AddButton from "../Components/AddButton";
 import { useGetProfileImageQuery } from "../Services/shopServices";
-import * as ImagePicker from 'expo-image-picker'
+
 
 const MyProfile = ({navigation}) => {
   

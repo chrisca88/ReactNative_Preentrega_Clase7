@@ -4,6 +4,14 @@ import React from 'react'
 import Card from './Card'
 import { setIdSelected } from '../Features/Shop/ShopSlice'
 
+/**
+ * This component is used in the following components:
+ * ItemListCategory
+ * 
+ * @param item The product information to display.
+ * @param navigation The navigation object for routing.
+ */
+
 const ProductItem = ({
   item,
   navigation

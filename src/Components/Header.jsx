@@ -7,6 +7,17 @@ import { colors } from '../Global/Colors'
 import { signOut } from "../Features/User/userSlice";
 import { deleteSession } from "../SQLite";
 
+/**
+ * This component is used in the following components:
+ * AuthStack
+ * CartStack
+ * MyProfileStack
+ * OrderStack 
+ * ShopStack
+ * 
+ * @param route The route object containing route information.
+ * @param navigation The navigation object for routing.
+ */
 
 const Header = ({
   route,
