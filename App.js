@@ -7,7 +7,8 @@ import store from './src/Store/store';
 import { init } from './src/SQLite';
 import { fonts } from './src/Assets/Fonts';
 
-
+target="_blank"
+rel="noreferrer"
 export default function App() {
 
   useEffect(()=> {
