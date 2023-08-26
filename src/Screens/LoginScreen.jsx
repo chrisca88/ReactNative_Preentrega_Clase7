@@ -1,27 +1,24 @@
-import { Pressable, StyleSheet, Text, View } from "react-native";
-import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import InputForm from "../Components/InputForm";
-import SubmitButton from "../Components/SubmitButton";
-import { colors } from "../Global/Colors";
-import { useSignInMutation } from "../Services/authServices";
-import { isAtLeastSixCharacters, isValidEmail } from "../Validations/auth";
-import { setUser } from "../Features/User/userSlice";
-import { insertSession } from "../SQLite";
+import { StyleSheet, View } from "react-native"
+import React, { useEffect, useState } from "react"
+import { useDispatch } from "react-redux"
+import { useNavigation } from '@react-navigation/native'
+import { useSignInMutation } from "../Services/authServices"
+import { isAtLeastSixCharacters, isValidEmail } from "../Validations/auth"
+import { setUser } from "../Features/User/userSlice"
+import { insertSession } from "../SQLite"
+import LoginForm from "../Components/LoginForm"
 
 
 
-const LoginScreen = ({ navigation }) => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-
+const LoginScreen = () => {
+    const navigation = useNavigation();
     const [errorEmail, setErrorEmail] = useState('')
     const [errorPassword, setErrorPassword] = useState('')
-
+  
+    const [triggerSignIn, resultSignIn] = useSignInMutation()
     const dispatch = useDispatch()
 
-    const [triggerSignIn, resultSignIn] = useSignInMutation();
-    const onSubmit = () => {
+    const onSubmit = (email, password) => {
 
         const isValidVariableEmail = isValidEmail(email)
         const isCorrectPassword = isAtLeastSixCharacters(password)
@@ -69,26 +66,13 @@ const LoginScreen = ({ navigation }) => {
 
     return (
         <View style={styles.main}>
-            <View style={styles.container}>
-                <Text style={styles.title}>Login to start</Text>
-                <InputForm
-                    label={"email"}
-                    onChange={(email) => setEmail(email)}
-                    error={errorEmail}
-                />
-                <InputForm
-                    label={"password"}
-                    onChange={(password) => setPassword(password)}
-                    error={errorPassword}
-                    isSecure={true}
-                />
-                <SubmitButton onPress={onSubmit} title="Send" />
-                <Text style={styles.sub}>Not have an account?</Text>
-                <Pressable onPress={() => navigation.navigate("Signup")}>
-                    <Text style={styles.subLink}>Sign up</Text>
-                </Pressable>
-            </View>
-        </View>
+        <LoginForm
+          onSubmit={onSubmit}
+          errorEmail={errorEmail}
+          errorPassword={errorPassword}
+          navigation={navigation}
+        />
+      </View>
     );
 };
 
@@ -100,27 +84,5 @@ const styles = StyleSheet.create({
         height: "100%",
         justifyContent: "center",
         alignItems: "center",
-    },
-    container: {
-        width: "90%",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: colors.violet,
-        gap: 15,
-        paddingVertical: 20,
-        borderRadius: 10,
-    },
-    title: {
-        fontSize: 22,
-        fontFamily: "Antique",
-    },
-    sub: {
-        fontSize: 14,
-        color: "black",
-    },
-    subLink: {
-        fontSize: 14,
-        color: "blue",
     },
 });
