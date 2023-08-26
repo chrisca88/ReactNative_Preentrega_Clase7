@@ -15,7 +15,7 @@ import { colors } from "../Global/Colors";
 const AddButton = ({
     title = "",
     onPress = () => {},
-    color = colors.pink,
+    color = colors.lightblue,
 }) => {
     return (
         <Pressable
@@ -41,6 +41,6 @@ const styles = StyleSheet.create({
     text: {
         fontFamily: "Antique",
         fontSize: 18,
-        color: colors.blue,
+        color: colors.white,
     },
 });

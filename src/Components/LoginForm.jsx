@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
       flexDirection: 'column',
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: colors.violet,
+      backgroundColor: colors.blue,
       gap: 15,
       paddingVertical: 20,
       borderRadius: 10,

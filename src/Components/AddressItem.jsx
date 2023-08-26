@@ -27,7 +27,7 @@ const AddressItem = ({ location, navigation }) => {
             </View>
             <Pressable onPress={onChangeLocation}>
                 <Entypo name="location" size={30} color="black">
-                    <Text style={styles.text2}>Change</Text>
+                    <Text style={styles.text2}> Change</Text>
                 </Entypo>
             </Pressable>
         </View>
@@ -39,7 +39,7 @@ export default AddressItem;
 const styles = StyleSheet.create({
     card: {
         height: 100,
-        backgroundColor: colors.violet,
+        backgroundColor: colors.blue,
         padding: 10,
         margin: 10,
         borderWidth: 2,
@@ -62,6 +62,6 @@ const styles = StyleSheet.create({
     text2: {
         fontFamily: "Antique",
         fontSize: 19,
-        color: colors.pink,
+        color: colors.white,
     },
 });
