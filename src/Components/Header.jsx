@@ -26,7 +26,7 @@ const Header = ({
   let title
   if (route.name === 'Home') title = 'Home'
   else if (route.name === 'ItemListCategory') title = route.params.category
-  else if (route.name === 'Detail') title = route.params.title
+  else if (route.name === 'Detail') title = "Item"
   else title = route.name
 
   const dispatch = useDispatch();

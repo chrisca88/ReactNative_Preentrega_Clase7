@@ -1,7 +1,8 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import { Feather } from "@expo/vector-icons";
 import { colors } from "../Global/Colors";
+import { useNavigation } from "@react-navigation/native";
 
 /**
  * This component is used in the following components:
@@ -11,21 +12,26 @@ import { colors } from "../Global/Colors";
  */
 
 const OrderItem = ({ order }) => {
+    const navigation = useNavigation()
     const total = order.items.reduce(
         (acc, currentItem) => (acc += currentItem.price * currentItem.quantity),
         0
     );
 
+    const goToOrderDetail = () => {
+        navigation.navigate('OrderDetail', { order });
+      }
+
     
     return (
-        <View style={styles.card} onPress={() => {}}>
+        <View style={styles.card}>
             <View style={styles.textContainer}>
                 <Text style={styles.text}>
                     {order.updatedAt}
                 </Text>
                 <Text style={styles.text2}>${total}</Text>
             </View>
-            <Feather name="search" size={30} color="black" />
+            <Feather name="search" size={30} color="black" onPress={goToOrderDetail} />
         </View>
     );
 };

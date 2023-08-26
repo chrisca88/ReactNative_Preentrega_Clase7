@@ -2,6 +2,7 @@ import React from "react";
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import Header from '../Components/Header'
 import OrderScreen from "../Screens/OrderScreen"
+import OrderDetailScreen from "../Screens/OrderDetailScreen";
 
 const Stack = createNativeStackNavigator()
 
@@ -16,6 +17,7 @@ const OrderStack = () => {
             })}
         >
             <Stack.Screen name="OrderScreen" component={OrderScreen} />
+            <Stack.Screen name="OrderDetail" component={OrderDetailScreen} />
 
         </Stack.Navigator>
     );
