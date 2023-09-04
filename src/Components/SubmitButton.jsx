@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet, Text } from "react-native";
+import { Pressable, StyleSheet, Text, TouchableOpacity } from "react-native";
 import React from "react";
 import { colors } from "../Global/Colors";
 
@@ -13,9 +13,17 @@ import { colors } from "../Global/Colors";
 
 const SubmitButton = ({ onPress, title }) => {
     return (
-        <Pressable onPress={onPress} style={styles.button}>
-            <Text style={styles.text}>{title}</Text>
-        </Pressable>
+        <TouchableOpacity
+        onPress={onPress}
+        style={styles.button}
+        >
+           <Text
+        style={styles.buttonText
+        }
+      >
+        {title}
+      </Text>
+        </TouchableOpacity>
     );
 };
 
@@ -23,16 +31,15 @@ export default SubmitButton;
 
 const styles = StyleSheet.create({
     button: {
-        backgroundColor: colors.lightpink,
+        backgroundColor: colors.lightblue,
         borderRadius: 6,
         justifyContent: 'center',
         alignItems: 'center',
-        padding: 8,
+        padding: 10,
         width: '60%'
     },
-    text: {
-        color: colors.lightblue,
-        fontFamily: 'Antique',
-        fontSize: 22
-    },
+      buttonText: {
+        color: colors.white,
+        fontSize: 16,
+      },
 });
